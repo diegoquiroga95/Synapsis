@@ -1,0 +1,44 @@
+:host
+  /deep/
+  ng2-st-tbody-custom
+  a.ng2-smart-action.ng2-smart-action-custom-custom {
+  display: inline;
+  text-align: center;
+  font-size: 0.5em; 
+}
+
+:host
+  /deep/
+  ng2-st-tbody-custom
+  a.ng2-smart-action.ng2-smart-action-custom-custom:hover {
+  color: #5dcfe3;
+}
+
+.nb-theme-default nb-accordion nb-accordion-item {
+  background-color: #edf1f7;}
+:host
+
+.k-window {
+    border-color: rgba(0,0,0,0.08);
+    color: #656565;
+    background-color: #373a3f;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.06);
+}
+
+.progress {
+  background-color: #e9ecef;
+  border-radius: 0.25rem;
+  display: flex;
+  font-size: 1.2rem;
+  height: 2rem;
+  margin-top:1rem;
+  overflow: hidden;
+}
+
+.progress-bar {
+  align-items: center;
+  background-color: #007bff;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}

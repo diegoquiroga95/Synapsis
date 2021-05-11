@@ -1,0 +1,31 @@
+<nb-card>
+  <nb-card-header>Gestion de Usuarios</nb-card-header>
+  <nb-card-body>
+    <ng2-smart-table
+      [settings]="settings"
+      [source]="usrs"
+      (custom)="onCustomAction($event)"
+    ></ng2-smart-table>
+  </nb-card-body>
+
+  <nb-card-footer>
+    <button
+      class="btn btn-primary"
+      routerLink="/pages/detalle-usuario/-1"
+    >Agregar Usuario</button>
+  </nb-card-footer>
+</nb-card>
+
+<kendo-dialog
+  title="Eliminacion de usuarios"
+  *ngIf="dialogOpened"
+  (close)="close()"
+  [minWidth]="250"
+  [width]="450"
+>
+  <p style="margin: 30px; text-align: center;">¿Desea Eliminar el usuario?</p>
+  <kendo-dialog-actions>
+    <button kendoButton (click)="action('no')">No</button>
+    <button kendoButton (click)="action('si')" primary="true">Si</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

@@ -1,0 +1,25 @@
+<div>
+  <nb-card class="inline-form-card" accent="danger" size="large">
+    <nb-card-header><b>Papelera de Proyectos</b></nb-card-header>
+    <nb-card-body>
+      <ng2-smart-table
+        [settings]="settings"
+        [source]="proy"
+        (custom)="onCustomAction($event)"
+      ></ng2-smart-table>
+    </nb-card-body>
+  </nb-card>
+</div>
+<kendo-dialog
+  title="Eliminacion de Proyectos"
+  *ngIf="dialogOpened"
+  (close)="close()"
+  [minWidth]="250"
+  [width]="450"
+>
+  <p style="margin: 30px; text-align: center;">¿Desea eliminar el proyecto?</p>
+  <kendo-dialog-actions>
+    <button kendoButton (click)="action('no')">No</button>
+    <button kendoButton (click)="action('si')" primary="true">Si</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

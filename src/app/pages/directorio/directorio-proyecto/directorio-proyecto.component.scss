@@ -1,0 +1,49 @@
+@import "../../../@theme/styles/themes.scss";
+
+@include nb-install-component {
+  table.table {
+    font-family: nb-theme(font-family-primary);
+    color: nb-theme(
+      text-basic-color
+    ); /* This will change the color when you switch the theme */
+  }
+}
+:host /deep/ ng2-st-tbody-edit-delete {
+  display: flex !important;
+  height: 0 !important;
+}
+
+:host
+  /deep/
+  ng2-st-tbody-custom
+  a.ng2-smart-action.ng2-smart-action-custom-custom {
+  display: inline-block;
+  width: 50px;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+:host
+  /deep/
+  ng2-st-tbody-custom
+  a.ng2-smart-action.ng2-smart-action-custom-custom:hover {
+  color: #5dcfe3;
+}
+mat-grid-tile {
+  background: lightblue;
+  margin-top: 2rem;
+}
+h2 {
+  margin-top: 50px;
+}
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+}
+mat-sidenav {
+  width: 120px;
+}

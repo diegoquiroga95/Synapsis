@@ -1,0 +1,160 @@
+<form [formGroup]="d_user_form" (ngSubmit)="onFormSubmit()">
+  <nb-card class="inline-form-card" accent="info">
+    <nb-card-header>{{ aom }} Usuario</nb-card-header>
+    <nb-card-body>
+      <div class="col-md-4 col-md-offset-4">
+        <div class="form-group row">
+          <label for="nom" class="label col-sm-3 col-form-label"
+            ><b>Nombre</b></label
+          >
+          <div class="col-sm-9">
+            <input
+              nbInput
+              fullWidth
+              shape="semi-round"
+              type="text"
+              formControlName="nombre"
+              class="form-control"
+              id="nom"
+              autocomplete="off"
+              placeholder=""
+              [(ngModel)]="nombreUsr"
+            />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="app" class="label col-sm-3 col-form-label"
+            ><b>Apellido</b></label
+          >
+          <div class="col-sm-9">
+            <input
+              nbInput
+              fullWidth
+              shape="semi-round"
+              type="text"
+              formControlName="apellido"
+              class="form-control"
+              id="app"
+              autocomplete="off"
+              placeholder=""
+              [(ngModel)]="apellidoUsr"
+            />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="pass" class="label col-sm-3 col-form-label"
+            ><b>Contraseña</b></label
+          >
+          <div class="col-sm-9">
+            <input
+              nbInput
+              fullWidth
+              shape="semi-round"
+              type="text"
+              formControlName="pass"
+              class="form-control"
+              id="pass"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="label col-sm-3 col-form-label"
+            ><b>Tipo Usuario</b></label
+          >
+          <div class="col-sm-9">
+            <nb-select formControlName="id_tipo_usuario">
+              <nb-option value="1">Proyect Manager</nb-option>
+              <nb-option value="2">Cliente</nb-option>
+              <nb-option value="3">Proveedor Externo</nb-option>
+              <nb-option value="4">Operario</nb-option>
+              
+            </nb-select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="label col-sm-3 col-form-label"><b>Empresa</b></label>
+          <div class="col-sm-9">
+            <nb-select formControlName="empresa">
+              <nb-option *ngFor="let tu of empresas" [value]="tu.id_empresa">{{
+                tu.nombre
+              }}</nb-option>
+            </nb-select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="label col-sm-3 col-form-label" for="fono"
+            ><b>Telefono</b></label
+          >
+          <div class="col-sm-9">
+          <input
+            nbInput
+            fullWidth
+            shape="semi-round"
+            (keypress)="numberOnly($event)"
+            type="text"
+            formControlName="fono"
+            class="form-control"
+            id="fono"
+            autocomplete="off"
+            placeholder=""
+            [(ngModel)]="telefonoUsr"
+          />
+        </div>
+      </div>
+
+        <div class="form-group row">
+          <label  class="label col-sm-3 col-form-label" for="profesion"><b>Profesion</b></label>
+          <div class="col-sm-9">
+          <input
+          nbInput
+            fullWidth
+            shape="semi-round"
+            type="text"
+            formControlName="profesion"
+            class="form-control"
+            id="profesion"
+            autocomplete="off"
+            placeholder=""
+            [(ngModel)]="profesionUsr"
+          />
+        </div>
+      </div>
+
+         <div class="form-group row">
+          <label  class="label col-sm-3 col-form-label" for="mail"><b>E-mail</b></label>
+          <div class="col-sm-9">
+          <input
+          nbInput
+          fullWidth
+          shape="semi-round"
+            type="mail"
+            formControlName="mail"
+            class="form-control"
+            id="mail"
+            autocomplete="off"
+            placeholder=""
+            [(ngModel)]="mailUsr"
+          />
+        </div>
+      </div>
+
+      
+      </div>
+    </nb-card-body>
+    <nb-card-footer>
+      <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!d_user_form.valid"
+    >
+      {{ crear_modificar }} Usuario
+    </button>
+    </nb-card-footer>  
+  </nb-card>
+</form>

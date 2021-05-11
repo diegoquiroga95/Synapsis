@@ -1,0 +1,119 @@
+<nb-card>
+  <nb-accordion>
+    <nb-accordion-item>
+
+      <nb-accordion-item-header>Detalles de area</nb-accordion-item-header>
+      <nb-accordion-item-body>
+        <div *ngIf="area">
+          <h1></h1>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row show-grid">
+                <div class="col-md-4 offset-md-1">
+                  <div>
+                    <button nbButton fullWidth shape="semi-round" status="info">
+                      Id. Area: {{ area.id_area }}
+                    </button>
+                  </div>
+                </div>
+                <div class="col-md-4 offset-md-2">
+                  <div>
+                    <button nbButton fullWidth shape="semi-round" status="info">
+                      Nombre de Area: {{ area.nombre }}
+                    </button>
+                  </div>
+                  <!--TODO implementar total_horas.php cuando hagas el modulo tareas-->
+                </div>
+              </div>
+              <div class="row show-grid">
+                <div class="col-md-4 offset-md-4">
+                  <div>
+                    <button nbButton fullWidth shape="semi-round" status="info">
+                      Lider: {{ area.lider_n }} {{ area.lider_a }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nb-accordion-item-body>
+    </nb-accordion-item>
+    <nb-accordion-item>
+      <nb-accordion-item-header
+        >Proyecto Legajo N°{{ this.leg }}</nb-accordion-item-header
+      >
+      <nb-accordion-item-body>
+        <div>
+          <div class="row">
+            <div class="col-md-12">
+              <ng2-smart-table
+                [settings]="settings"
+                [source]="tareas"
+                (custom)="onCustomAction($event)"
+              ></ng2-smart-table>
+            </div>
+          </div>
+          <h2 *ngIf="!tareas">
+            No tiene Tareas asignadas todavia este proyecto
+          </h2>
+        </div>
+      </nb-accordion-item-body>
+    </nb-accordion-item>
+  </nb-accordion>
+</nb-card>
+<nb-card>
+  <button
+    class="btn btn-primary"
+    [disabled]="!permitido"
+    (click)="save_leg_new()"
+  >
+    Agregar Tarea
+  </button>
+</nb-card>
+
+<nb-card>
+  <nb-card-body>
+    <gantt [tipo_de_tarea]="tipo_de_tarea"></gantt>
+  </nb-card-body>
+</nb-card>
+<!--
+<kendo-window title="Archivos" *ngIf="fileWindowOpened" (close)="archivosWindowClose()" [minWidth]="950" [width]="1050"[height]="820" style="min-width: 75vh; min-height: 75vh; position: absolute; z-index: 1000; width: 950px; top: 275px; left: 475px;  background-color: #edf1f7;">
+    <ngx-archivos [idTarea]="id_tarea"></ngx-archivos>
+
+
+  </kendo-window> -->
+
+<kendo-dialog
+  title="¿Eliminar Tarea?"
+  *ngIf="dialogOpened"
+  (close)="close()"
+  [minWidth]="250"
+  [width]="450"
+>
+  <div>ADVERTENCIA:Esta accion es Irreversible</div>
+  <!-- <ngx-modal-tarea></ngx-modal-tarea> -->
+  <kendo-dialog-actions>
+    <button kendoButton (click)="action('no')">No</button>
+    <button kendoButton (click)="action('si')" primary="true">Si</button>
+  </kendo-dialog-actions>
+</kendo-dialog>
+
+
+<kendo-dialog
+  title="Archivos"
+  *ngIf="fileWindowOpened"
+  (close)="archivosWindowClose()"
+  [minWidth]="250"
+  [width]="450"
+   [minWidth]="950" [width]="1300"[height]="700" style="min-width: 75vh; min-height: 75vh; position: absolute; z-index: 1000; width: 950px; top: 250px; left: 475px;  background-color: #edf1f7;"
+>
+  <div><ngx-archivos [idTarea]="id_tarea"></ngx-archivos></div>
+
+  <!-- <kendo-dialog-actions>
+
+    <button kendoButton (click)="archivosAction('hola')">hola</button>
+    <button kendoButton (click)="archivosAction('chau')">chau</button>
+    <button kendoButton (click)="archivosAction('?')" >?</button>
+  </kendo-dialog-actions> -->
+</kendo-dialog>

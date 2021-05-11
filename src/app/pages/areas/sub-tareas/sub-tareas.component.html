@@ -1,0 +1,26 @@
+<nb-card>
+    <nb-card-header>Detalles de sub tarea N°:</nb-card-header>
+    <nb-card-body>
+        <ng2-smart-table
+        [settings]="settings"
+        [source]="this.tareas"
+        ></ng2-smart-table>
+    </nb-card-body>
+</nb-card>
+
+<nb-card>
+    <button 
+    class="btn btn-primary"
+    (click)="addNewTask()"
+    >
+      Agregar Sub-Tarea
+    </button>
+  </nb-card>
+
+ <nb-card>
+    <nb-card-body>
+        <div>
+        <gantt [tipo_de_tarea]="tipo_de_tarea" [id_tarea]="id_tarea"></gantt>
+         </div>
+    </nb-card-body>
+ </nb-card>

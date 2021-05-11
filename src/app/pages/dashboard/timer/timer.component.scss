@@ -1,0 +1,43 @@
+:host /deep/ ng2-st-tbody-edit-delete {
+    display: flex !important;
+    height: 0 !important;
+  }
+  :host /deep/ ng2-smart-table { font-size: medium; }
+  :host
+    /deep/
+    ng2-st-tbody-custom
+    a.ng2-smart-action.ng2-smart-action-custom-custom {
+    display: inline;
+    text-align: center;
+    font-size: 0.5em;
+  }
+
+  :host
+    /deep/
+    ng2-st-tbody-custom
+    a.ng2-smart-action.ng2-smart-action-custom-custom:hover {
+    color: #5dcfe3;
+  }
+
+
+.k-window {
+    border-color: rgba(0,0,0,0.08);
+    color: #656565;
+    background-color: #373a3f;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.06);
+}
+
+#container{
+  border:1px solid #333;
+  border-radius :99px;
+  width:500px;
+  margin:20px auto;
+  padding:20px;
+  text-align:center;
+  background : #007bff;
+}
+#timerFont{
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+}

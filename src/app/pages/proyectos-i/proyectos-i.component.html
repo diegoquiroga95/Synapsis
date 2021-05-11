@@ -1,0 +1,36 @@
+<div>
+  <nb-card class="inline-form-card" accent="warning" size="large">
+    <nb-card-header><b>Gestion de Proyectos Activos</b></nb-card-header>
+    <nb-card-body>
+      <ng2-smart-table
+        [settings]="settings"
+        [source]="proy"
+        (custom)="onCustomAction($event)"
+      ></ng2-smart-table>
+    </nb-card-body>
+
+    <nb-card-footer>
+      <button class="btn btn-primary" routerLink="/pages/detalle-proyecto/-1">
+        Nuevo Proyecto
+      </button>
+    </nb-card-footer>
+  </nb-card>
+</div> 
+
+
+
+<kendo-dialog
+  title="Descarte de Proyectos"
+  *ngIf="dialogOpened"
+  (close)="close()"
+  [minWidth]="250"
+  [width]="450"
+>
+  <p style="margin: 30px; text-align: center;">
+    ¿Desea enviar a la papelera el proyecto?
+  </p>
+  <kendo-dialog-actions>
+    <button kendoButton (click)="action('no')">No</button>
+    <button kendoButton (click)="action('si')" primary="true">Si</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

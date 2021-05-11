@@ -1,0 +1,58 @@
+<div *ngIf="proy">
+<h1>{{proy.nombre}}</h1>
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <div class="row show-grid">
+        <div class="col-md-4">
+          <div><b>Legajo: </b>{{proy.legajo}}</div>
+        </div>
+        <div class="col-md-4 offset-md-4">
+          <div><b>Total Horas: </b>00:00:00</div><!--TODO implementar total_horas.php cuando hagas el modulo tareas-->
+        </div>
+      </div>
+      <div class="row show-grid">
+        <div class="col-md-4">
+          <div><b>Cliente: </b>{{proy.cliente}}</div>
+        </div>
+        <div class="col-md-4 offset-md-4">
+          <div><b>Estado: </b>{{proy.estado}}</div>
+        </div>
+      </div>
+    </nb-card>
+  </div>
+</div>
+</div>
+<div >
+<h2>Areas del proyecto</h2>
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+        <nb-card-body> 
+            <mat-list style="padding-left: 1rem;">  
+            <mat-list-item  *ngFor="let ar of areas">    
+              <mat-icon matListIcon>bubble_chart</mat-icon>
+              <h3 matLine> {{ar.nombre}} </h3>
+              <button mat-button (click)="ver(ar.id_area)">Ver</button>
+              <button mat-button [disabled]="!permitido" (click)="save_leg_mod(ar.id_area)">Modificar</button>
+              <button mat-icon-button [disabled]="!permitido" (click)="eliminar(ar.id_area)">
+                <mat-icon matListIcon>delete_sweep</mat-icon>
+              </button>          
+            </mat-list-item>
+          </mat-list>
+          <button mat-icon-button style="margin-left: 3rem;" [disabled]="!permitido" (click)="save_leg_new()">
+          <mat-icon matListIcon>add_circle_outline</mat-icon>
+          </button>
+       </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+<h2 *ngIf="!areas">No tiene Areas asignadas todavia este proyecto</h2>
+</div>
+<kendo-dialog title="Desvinculamiento de area" *ngIf="dialogOpened" (close)="close()" [minWidth]="250" [width]="450">
+  <p style="margin: 30px; text-align: center;">¿Desea desvincular esta area de este proyecto?</p>
+  <kendo-dialog-actions>
+      <button kendoButton (click)="action('no')">No</button>
+      <button kendoButton (click)="action('si')" primary="true">Si</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

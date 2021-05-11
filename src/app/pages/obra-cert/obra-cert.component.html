@@ -1,0 +1,285 @@
+<form class="ContenedorPrincipal">
+  <nb-card [formGroup]="itemCert" *ngIf="this.hiddenItem">
+    <nb-card-header>Agregar item Al certificado</nb-card-header>
+    <nb-card-body>
+
+      <div class="row show-grid col-md-offset-4">
+        <div class="col-md-2">
+          <input
+            nbInput
+            fullWidth
+            shape="semi-round"
+            type="text"
+            formControlName="nombre_itemCert"
+            class="form-control"
+            id="nom"
+            autocomplete="off"
+            placeholder=""
+          />
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-primary" (click)="addItem()">+</button>
+        </div>
+      </div>
+      <!-- <div class="col-md-4 col-md-offset-4">
+        iva
+        <input
+          nbInput
+          fullWidth
+          shape="semi-round"
+          type="number"
+          formControlName="iva"
+          class="form-control"
+          id="nom"
+          autocomplete="off"
+          placeholder=""
+        />
+      </div>
+      <div class="col-md-4 col-md-offset-4">
+        Adelanto
+        <input
+          nbInput
+          fullWidth
+          shape="semi-round"
+          type="text"
+          formControlName="adelanto"
+          class="form-control"
+          id="nom"
+          autocomplete="off"
+          placeholder=""
+        />
+      </div> -->
+      <!-- <div class="col-md-4 col-md-offset-4">
+      Nombre item
+      <input
+      nbInput
+      fullWidth
+      shape="semi-round"
+      type="text"
+      formControlName="buscarItem"
+      class="form-control"
+      id="nom"
+      autocomplete="off"
+      placeholder=""
+    />
+
+    </div>-->
+    </nb-card-body>
+    <nb-card-footer>
+      <!-- <button (click)="searchIndex()">Search item</button> -->
+
+      <button (click)="exportAsXLSX()" class="btn btn-primary btnmod">Export</button>
+      <button (click)="showIva()" class="btn btn-primary btnmod">Modificar Iva</button>
+      <button (click)="showAdelanto()" class="btn btn-primary btnmod">Modificar Adelanto</button>
+    </nb-card-footer>
+  </nb-card>
+</form>
+
+<form [formGroup]="cert_group">
+  <nb-card *ngIf="!this.hiddenItem">
+    <nb-card-header>{{ this.itemCert.value.nombre_itemCert }}</nb-card-header>
+    <div>
+      <nb-card-body>
+        <div class="row show-grid col-md-offset-4">
+          <div class="col-md-6">
+            <div class="divmargin">Nombre item</div>
+          </div>
+          <div class="col-md-1 divmargin">Unidad</div>
+          <div class="col-md-1">
+            <div class="divmargin">Cantidad</div>
+          </div>
+          <div class="col-md-1">
+            <div class="divmargin">Unitario</div>
+          </div>
+          <div class="col-md-1">
+            <div class="divmargin">Avance Acumulado</div>
+          </div>
+
+          <div class="col-md-1">
+            <div class="divmargin">Avance Anterior</div>
+          </div>
+        </div>
+        <div class="row show-grid col-md-offset-4">
+          <div class="col-md-6">
+            <div>
+              <input
+                nbInput
+                fullWidth
+                shape="semi-round"
+                type="text"
+                formControlName="nombre_subItem"
+                class="form-control sep"
+                id="nom"
+                autocomplete="off"
+                placeholder="Nombre sub-item"
+                class="sep"
+              />
+            </div>
+          </div>
+          <div class="col-md-1">
+            <nb-select formControlName="tipo_unidad">
+              <nb-option class="divmargin"
+                *ngFor="let med of unidadesMedida"
+                [value]="med.abreviatura"
+                >{{ med.abreviatura }}</nb-option
+              >
+            </nb-select>
+          </div>
+          <div class="col-md-1">
+            <div>
+              <input
+                nbInput
+                fullWidth
+                shape="semi-round"
+                type="text"
+                formControlName="cantidad"
+                class="form-control"
+                id="nom"
+                autocomplete="off"
+                placeholder="Cantidad"
+              />
+            </div>
+          </div>
+          <div class="col-md-1">
+            <div>
+              <input
+                nbInput
+                fullWidth
+                shape="semi-round"
+                type="number"
+                formControlName="unitario"
+                class="form-control"
+                id="nom"
+                autocomplete="off"
+                placeholder="Unitario"
+                min="1"
+                max="100"
+              />
+            </div>
+          </div>
+          <div class="col-md-1">
+            <div>
+              <input
+                nbInput
+                fullWidth
+                shape="semi-round"
+                type="number"
+                formControlName="acumuladoAvance"
+                class="form-control divAvanceAcum"
+                id="nom"
+                autocomplete="off"
+                placeholder="acumuladoAvance"
+                oninput="if(value > 100) alert('El maximo es 100')"
+              />
+            </div>
+          </div>
+
+          <div class="col-md-1">
+            <div>
+              <input
+                nbInput
+                fullWidth
+                shape="semi-round"
+                type="text"
+                formControlName="anteriorAvance"
+                class="form-control divAvanceAnt"
+                id="nom"
+                autocomplete="off"
+                placeholder="anteriorAvance"
+                oninput="if(value > 100) alert('El maximo es 100')"
+              />
+            </div>
+          </div>
+
+          <div class="col-md-1">
+            <div>
+              <button class="btn btn-primary" (click)="checkVal()">+</button>
+            </div>
+          </div>
+        </div>
+      </nb-card-body>
+    </div>
+
+    <nb-card-footer>
+      <button class="btn btn-primary" (click)="print()">Aceptar</button>
+    </nb-card-footer>
+  </nb-card>
+
+  <nb-card class="alin">
+    <nb-card-body *ngIf="!this.hiddenItem">
+      <nb-card-header class="row show-grid col-md-offset-4">
+        <div class="col-md-6">
+          <div class="divmargin">Nombre Sub item</div>
+        </div>
+        <div class="col-md-1 divmargin">Unidad</div>
+        <div class="col-md-1 divmargin">Cantidad</div>
+
+        <div class="col-md-1 divmargin">Precio Unitario</div>
+        <div class="col-md-1 divmargin">Avance Anterior</div>
+
+        <div class="col-md-1 divmargin">Avance Acumulado</div>
+      </nb-card-header>
+
+      <div *ngIf="!this.hiddenListItem">
+        <div
+          class="row show-grid col-md-offset-4"
+          *ngFor="let item of this.arrayItem[this.itemIndex][0]; let i = index"
+        >
+          <div class="col-md-6">
+            <div class="alinearx">
+              {{ item.nombre_subItem }}
+              <hr>
+            </div>
+          </div>
+
+          <div class="col-md-1">
+            <div class="alinear">{{ item.tipo_unidad }}</div>
+
+          </div>
+          <div class="col-md-1">
+            <div class="alinear">{{ item.cantidad }}</div>
+
+          </div>
+
+          <div class="col-md-1">
+            <div class="alinear">{{ item.unitario }}</div>
+
+          </div>
+          <div class="col-md-1">
+            <div class="alinear antAv">{{ item.anteriorAvance }} %</div>
+
+          </div>
+
+          <div class="col-md-1">
+            <div class="alinear acumAv">{{ item.acumuladoAvance }} %</div>
+
+          </div>
+
+          <!-- <div class="col-md-2">
+          <div>
+            <button class="btn btn-primary" (click)="editSubChk(item,i)">
+              {{ i }}.{{ item.nombre_subItem }}
+            </button>
+          </div>
+        </div> -->
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</form>
+
+<nb-card *ngIf="this.hiddenIva">
+  <nb-card-body>
+    defaultIVA - <input type="text" class="inputIva" value="defaultIVA" [(ngModel)]="defaultIVA" />
+    <button class="btn btn-primary btnmodIva" (click)="setIva(defaultIVA)" (click)="showIva()" formtarget="_blank">Modificar</button>
+
+  </nb-card-body>
+</nb-card>
+
+<nb-card *ngIf="this.hiddenAdelanto">
+  <nb-card-body>
+    defaultADelanto - <input type="text" value="defaultAdelanto" [(ngModel)]="defaultAdelanto" />
+    <button class="btn btn-primary btnmodAdelanto" (click)="setAdelanto(defaultAdelanto)" (click)="showAdelanto()" formtarget="_blank">Modificar</button>
+
+  </nb-card-body>
+</nb-card>

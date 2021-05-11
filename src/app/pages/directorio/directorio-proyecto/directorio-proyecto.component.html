@@ -1,0 +1,70 @@
+
+<nb-layout>
+  
+    <nb-layout-column class="colored-column-info">
+        <nb-card accent="info">
+          <nb-card-header>Directorio proyecto : Test</nb-card-header>
+          <nb-accordion>
+            <nb-accordion-item  *ngFor="let datas of this.UsrSrv.dataDirectorio; let i =index">
+      
+           
+                <nb-accordion-item-header>{{this.UsrSrv.dataDirectorio[i][0].nombre_grupo}} </nb-accordion-item-header>
+                <nb-accordion-item-body>
+                <ng2-smart-table 
+                [settings]="settings"
+                [source]="this.UsrSrv.dataDirectorio[i]"
+                >
+                </ng2-smart-table>
+              </nb-accordion-item-body>
+           
+ 
+          </nb-accordion-item> 
+          </nb-accordion>
+        </nb-card>
+    </nb-layout-column>
+   
+    <nb-sidebar class="menu-sidebar" style="padding: 0rem" tag="menu-sidebar" responsive tag="1"  right  >
+            
+      
+
+              <nb-card>
+                <nb-card-body>
+                <nb-card-header>Vistas</nb-card-header>
+
+                <nb-select placeholder="Select filtro" fullWidth shape="semi-round">
+                  <nb-option value="1">Personas y Companias</nb-option>
+                  <nb-option value="2">Personas agrupadas por Companias</nb-option>
+                  <nb-option value="3">Personas y Companias inactivas</nb-option>
+             
+              </nb-select>
+            </nb-card-body>             
+
+              </nb-card>
+              <nb-card>
+              <button  nbButton shape="semi-round" status="info" (click)="openModalPersona()"> + Persona</button>
+            </nb-card>
+            <nb-card>
+              <button  nbButton shape="semi-round" status="info" (click)="openModalCompania()"> + Compania</button>
+            </nb-card>
+            <!-- <nb-card>
+              <button  nbButton shape="semi-round" status="info"> + Grupo de distribución</button>
+            </nb-card> -->
+
+     
+     
+    </nb-sidebar>
+    
+  </nb-layout>
+
+  <kendo-dialog
+  title="¿Agregar Persona?"
+  *ngIf="dialogOpened"
+  (close)="close()"
+  [minWidth]="250"
+  [width]="750"
+  [height]="500"
+> 
+
+  <ngx-am-compania-persona [personaOcompania]="this.persona"></ngx-am-compania-persona>
+  
+</kendo-dialog>

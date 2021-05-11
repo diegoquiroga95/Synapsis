@@ -1,0 +1,71 @@
+<div>
+  <nb-card class="inline-form-card" accent="info" size="large">
+    <nb-card-header><b>Gestion de Proyectos Activos</b></nb-card-header>
+    <nb-card-body>
+      <ng2-smart-table
+        [settings]="settings"
+        [source]="proy"
+        (custom)="onCustomAction($event)"
+      ></ng2-smart-table>
+    </nb-card-body>
+
+    <nb-card-footer>
+      <button class="btn btn-primary" routerLink="/pages/detalle-proyecto/-1">
+        Nuevo Proyecto
+      </button>
+    </nb-card-footer>
+  </nb-card>
+</div>
+
+<kendo-dialog
+  title="Descarte de Proyectos"
+  *ngIf="dialogOpened"
+  (close)="close()"
+  [minWidth]="250"
+  [width]="450"
+>
+  <p style="margin: 30px; text-align: center;">
+    ¿Desea enviar a la papelera el proyecto?
+  </p>
+  <kendo-dialog-actions>
+    <button kendoButton (click)="action('no')">No</button>
+    <button kendoButton (click)="action('si')" primary="true">Si</button>
+  </kendo-dialog-actions>
+</kendo-dialog>
+
+<!--   ****************
+
+<mat-sidenav-container class="example-container" >
+      <mat-sidenav #sidenav mode="side" [(opened)]="opened" (keydown.escape)="close()">
+          <button mat-button> 
+                  <mat-icon>home</mat-icon>
+                  <span>Home</span>  
+          </button>
+          <button mat-button routerLink="/proyectos">Proyectos</button>
+          <button mat-button>Mis Tareas</button>
+          <button mat-button>Mis Archivos</button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <mat-toolbar color="primary">   
+          <button type="button" mat-icon-button (click)="sidenav.toggle()"><mat-icon >view_headline</mat-icon></button>
+          <h1>Bienvenido a Sinapsis </h1>                    
+      </mat-toolbar>     
+  <mat-list *ngIf="!proy"  style="padding-left: 1rem; width: 26rem">  
+    <mat-list-item  *ngFor="let proyecto of proy">    
+      <mat-icon matListIcon>bubble_chart</mat-icon>
+      <h3 matLine> {{proyecto.nombre}} </h3>
+      <p matLine>
+        <span> {{proyecto.legajo}} </span>
+        <span> -- {{proyecto.cliente}} </span>
+      </p>    
+      <button mat-button routerLink="/AMproyectos/{{proyecto.legajo}}">Modificar</button>
+      <button mat-icon-button (click)="eliminar(proyecto.legajo)">
+        <mat-icon matListIcon>delete_sweep</mat-icon>
+      </button>  
+    </mat-list-item>
+  </mat-list>
+  <button mat-icon-button style="margin-left: 3rem;" routerLink="/AMproyectos/-1">
+  <mat-icon matListIcon>add_circle_outline</mat-icon>
+  </button>
+  </mat-sidenav-content>
+  </mat-sidenav-container>--> 

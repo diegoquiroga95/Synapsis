@@ -1,0 +1,16 @@
+[0731/094008.605:ERROR:settings.cc(320)] Settings magic is not 1129342067
+[1119/135420.643:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
+[1120/135420.680:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
+[1121/135421.941:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
+[1121/224526.064:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acceso denegado} Un proceso ha solicitado acceso a un objeto, pero no se le han concedido esos derechos de acceso. (0xc0000022)
+[1121/224526.049:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acceso denegado} Un proceso ha solicitado acceso a un objeto, pero no se le han concedido esos derechos de acceso. (0xc0000022)
+[1121/224526.111:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acceso denegado} Un proceso ha solicitado acceso a un objeto, pero no se le han concedido esos derechos de acceso. (0xc0000022)
+[1121/224526.049:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acceso denegado} Un proceso ha solicitado acceso a un objeto, pero no se le han concedido esos derechos de acceso. (0xc0000022)
+[1121/224526.127:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acceso denegado} Un proceso ha solicitado acceso a un objeto, pero no se le han concedido esos derechos de acceso. (0xc0000022)
+[1121/224526.049:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acceso denegado} Un proceso ha solicitado acceso a un objeto, pero no se le han concedido esos derechos de acceso. (0xc0000022)
+[1121/224526.142:ERROR:exception_snapshot_win.cc(99)] thread ID 12372 not found in process
+[1121/224526.142:ERROR:exception_snapshot_win.cc(99)] thread ID 6504 not found in process
+[1121/224526.142:ERROR:exception_snapshot_win.cc(99)] thread ID 12320 not found in process
+[1121/224526.142:ERROR:exception_snapshot_win.cc(99)] thread ID 15400 not found in process
+[1121/224526.142:ERROR:exception_snapshot_win.cc(99)] thread ID 15064 not found in process
+[1121/224526.142:ERROR:exception_snapshot_win.cc(99)] thread ID 3344 not found in process

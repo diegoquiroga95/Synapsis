@@ -1,0 +1,9 @@
+@import "dhtmlx-gantt/codebase/dhtmlxgantt.css";
+
+.gantt-chart{
+	position: relative;
+	width: 100%;
+    height: 600px;
+    z-index: 9;
+}
+.week-end{ background: rgba(183,142,185,0.3) !important;}

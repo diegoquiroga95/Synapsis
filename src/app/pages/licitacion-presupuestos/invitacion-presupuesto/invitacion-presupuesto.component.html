@@ -1,0 +1,86 @@
+<nb-card>
+  <nb-card-body>
+    <nb-tabset fullWidth>
+      <nb-tab tabTitle="Creacion de documentos">
+        <p>aca van la creacion de documentos.</p>
+      </nb-tab>
+
+      <nb-tab tabTitle="Creacion de paquetes de ofertas">
+        <p>aca van los paquetes de ofertas.</p>
+      </nb-tab>
+
+      <nb-tab tabTitle="Invitación">
+        <div class="row">
+        <div class="col-md-12">
+          <nb-card class="inline-form-card">
+
+
+            <nb-card-header>Asunto <input
+              nbInput
+              shape="semi-round"
+              type="text"
+              [(ngModel)]="asunto"
+              class="form-control"
+              autocomplete="off"
+              placeholder=""
+              ></nb-card-header>
+            <nb-card-body>
+              <form [formGroup]="mail_form" class="form-inline">
+                <div>Para</div>
+                <input
+                nbInput
+                  fullWidth
+                  shape="semi-round"
+                  type="email"
+                  formControlName="toSend"
+                  class="form-control"
+                  autocomplete="off"
+                  placeholder=""
+               
+                >
+                <div>CC</div>
+                <input
+                nbInput
+                  fullWidth
+                  shape="semi-round"
+                  type="text"
+                  formControlName="cc"
+                  class="form-control"
+                  autocomplete="off"
+                  placeholder=""
+                >
+                <div>CCO</div>
+                <input
+                nbInput
+                  fullWidth
+                  shape="semi-round"
+                  type="text"
+                  formControlName="cco"
+                  class="form-control"
+                  autocomplete="off"
+                  placeholder=""
+                >
+            </form>
+            </nb-card-body>
+
+            
+          </nb-card>
+        </div>
+      </div>
+      
+        
+   
+
+        <ckeditor
+          [config]="{ extraPlugins: 'divarea', height: '200' }"
+          [(ngModel)]="editorValue"
+          #myckeditor="ngModel"
+          
+        ></ckeditor>
+        <div  style="padding-top: 20px;">
+        <button (click)="onFormSubmit()" class="btn btn-primary"   [disabled]="mail_form.invalid">Enviar Correo</button>
+      </div>
+      </nb-tab>
+    </nb-tabset>
+  </nb-card-body>
+</nb-card>

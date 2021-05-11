@@ -1,0 +1,165 @@
+<form [formGroup]="d_proy_form" (ngSubmit)="onFormSubmit()">
+  <nb-card class="inline-form-card" accent="info" >
+    <nb-card-header>{{ aom }} proyecto</nb-card-header>
+
+    <nb-card-body>
+      <div class="col-md-4 col-md-offset-4">
+        
+
+        <div class="form-group row">
+          <label for="nom" class="label col-sm-3 col-form-label"><b>Nombre</b></label>
+          <div class="col-sm-9">
+            <input
+              type="text"
+              nbInput
+              fullWidth
+              shape="semi-round"
+              formControlName="nombre"
+              class="form-control"
+              id="nom"
+              autocomplete="off"
+              [(ngModel)]="nombre"
+              (keyup)="checkNombreRepetido()"
+              (click)="fixCheckRepetidoMouseClick()"
+              nbTooltip="Nombre En Uso, Seleccione uno nuevo" 
+              nbTooltipPlacement="right"
+              nbTooltipTrigger="noop"
+              nbTooltipStatus="control"  
+          
+            />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="pass" class="label col-sm-3 col-form-label"><b>Legajo</b></label>
+          <div class="col-sm-9">
+          <input
+          *ngIf="!modif; else notmodif"
+            
+            nbInput
+            fullWidth
+            shape="semi-round"
+            type="text"
+            formControlName="legajo"
+            class="form-control"
+            id="pass"
+            autocomplete="off"
+            [(ngModel)]="legajo"
+            disabled
+          />
+          <ng-template #notmodif>
+            <input
+     
+              nbInput
+              fullWidth
+              shape="semi-round"
+              type="text"
+              formControlName="legajo"
+              class="form-control"
+              id="pass"
+              autocomplete="off"
+              [(ngModel)]="legajo"
+              (keyup)="checkLegajoRepetido()"
+              nbPopover="Legajo en uso / No ingresado, Ingrese uno nuevo"
+              nbPopoverTrigger="noop"
+              nbPopoverPlacement="right"
+              
+            />
+          </ng-template>
+        </div>
+      </div>
+
+        <div class="form-group row">
+          <label class="label col-sm-3 col-form-label"><b>Cliente</b></label>
+          <div class="col-sm-9">
+          <nb-select formControlName="cliente" name="cliente">
+            <nb-option *ngFor="let tu of clientes" [value]="tu.id_user">{{
+              tu.nombre
+            }}</nb-option>
+          </nb-select>
+        </div>
+      </div>
+
+
+      <div class="form-group row" *ngIf="!modif; else modifecha">
+        <label class="label col-sm-3 col-form-label"><b>Fecha de Inicio</b></label>
+        <div class="col-sm-9">
+        <input nbInput formControlName="fechaInicioProy" [(ngModel)]="fechaInicio" disabled>
+        <!-- <nb-datepicker format="yyyy/MM/dd" #picker (dateChange)="print()" [min]="min"  ></nb-datepicker>  -->
+      </div>
+    </div>
+
+    <ng-template #modifecha>
+      <div class="form-group row">
+          <label class="label col-sm-3 col-form-label"><b>Fecha de Inicio</b></label>
+          <div class="col-sm-9">
+          <input nbInput formControlName="fechaInicioProy" placeholder="Pick Date" [nbDatepicker]="picker" [(ngModel)]="fechaInicio">
+          <nb-datepicker  #picker  [min]="min" ></nb-datepicker> 
+        </div>
+      </div>
+    </ng-template>
+
+      
+
+        <div *ngIf="inac" class="form-group row">
+          <label class="label col-sm-3 col-form-label"><b>Estado</b></label>
+          <div class="col-sm-9">
+          <nb-select formControlName="estado">
+            <nb-option value="1">Activo</nb-option>
+            <nb-option value="2">Inactivo</nb-option>
+          </nb-select> 
+        </div>
+      </div>
+    
+
+        <div class="form-group row">
+          <label for="mem" class="label col-sm-3 col-form-label"><b>Miembros</b></label>
+          <div class="col-sm-9">
+          <kendo-multiselect
+            formControlName="miembros"
+            [data]="miembros"
+            textField="nombre"
+            valueField="id_user"
+            [(ngModel)]="this.miembrosProy"
+          >
+          </kendo-multiselect>
+        </div>
+        
+      </div>
+      <div class="form-group row">
+        <label class="label col-sm-3 col-form-label"><b>Descripcion de Proyecto</b></label>
+        <div class="col-sm-9" >
+          <textarea nbInput placeholder="Resumen Breve del proyecto"  formControlName="comment"></textarea>
+      </div>
+      
+    </div>
+    </div>
+
+    </nb-card-body>
+    <nb-card-footer
+      ><button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!d_proy_form.valid"
+      >
+        {{ crear_modificar }} proyecto
+      </button></nb-card-footer
+    >
+  </nb-card>
+</form>
+
+<kendo-dialog
+  title="Asignacion de Areas"
+  *ngIf="dialogOpened"
+  (close)="close()"
+  [minWidth]="250"
+  [width]="450"
+>
+  <p style="margin: 30px; text-align: center;">
+    ¿Desea Asignar areas al Proyecto?
+  </p>
+  <kendo-dialog-actions>
+    <button kendoButton (click)="action('no')">No</button>
+    <button kendoButton (click)="action('si')" primary="true">Si</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

@@ -1,0 +1,27 @@
+<nb-card *ngIf="this.personaOcompania; else compania">
+    <nb-card-header>Lista De Companias</nb-card-header>
+    <kendo-multiselect
+    
+  >
+  </kendo-multiselect>
+ </nb-card>
+
+<ng-template #compania>
+    <form>
+    <kendo-multiselect
+    [data]="empresas"
+    textField="nombre"
+    valueField="id_user"
+    
+    >
+    </kendo-multiselect>
+</form>
+</ng-template>
+
+
+<!-- formControlName="miembros"
+    getEmpresa
+    [data]="miembros"
+    textField="nombre"
+    valueField="id_user"
+     -->

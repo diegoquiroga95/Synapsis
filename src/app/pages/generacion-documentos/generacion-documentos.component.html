@@ -1,0 +1,27 @@
+
+<button class="btn btn-primary obraCert" (click)="showCertObraTable()"> CERTIFICADO OBRA</button>
+
+<ng-container *ngIf="this.showTable">
+  <nb-card>
+    <nb-card-body>
+     <ng2-smart-table
+     [settings]="settings"
+     [source]="proy"
+     (custom)="onCustomAction($event)"
+      ></ng2-smart-table>
+    </nb-card-body>
+  </nb-card>
+</ng-container>
+
+
+<kendo-dialog
+  title="Archivos"
+  *ngIf="fileWindowOpened"
+  (close)="archivosWindowClose()"
+  [minWidth]="250"
+  [width]="450"
+   [minWidth]="950" [width]="1300"[height]="700" style="min-width: 75vh; min-height: 75vh; position: absolute; z-index: 1000; width: 950px; top: 250px; left: 475px;  background-color: #edf1f7;"
+>
+  <div><ngx-lista-obra-cert [legajo] = "legajo"></ngx-lista-obra-cert></div>
+
+</kendo-dialog>

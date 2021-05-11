@@ -1,0 +1,37 @@
+<div id="container">
+  <div *ngIf="tareasMensaje; else sinTareas">
+  
+    <div id="timerFont">
+     
+      {{ this.tmrSrv.ticks}}
+
+    </div>
+    <button class="btn btn-primary" id="timerFont" (click)="stopTimer(this.idTarea)">
+       <nb-icon icon="play-circle-outline"></nb-icon>
+    </button>
+
+    <button class="btn btn-primary" id="timerFont" (click)="pauseTimer()">
+      <nb-icon icon="pause-circle-outline"></nb-icon>
+   </button>
+
+   <button class="btn btn-primary" id="timerFont" (click)="resumeTimer()">
+    <nb-icon icon="star-outline"></nb-icon>
+ </button>
+  </div>
+
+  <ng-template #sinTareas>
+    <div id="timerFont">
+     
+      No Tienes Tareas Activas en este momento
+
+    </div>
+  </ng-template>
+</div>
+
+<div *ngIf="!tareasMensaje">
+<ng2-smart-table
+  [settings]="settings"
+  [source]="this.tareaSrv.tareasUser"
+  (custom)="onCustomAction($event)"
+></ng2-smart-table>
+</div>

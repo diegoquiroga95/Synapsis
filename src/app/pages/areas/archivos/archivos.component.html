@@ -1,0 +1,123 @@
+<nb-card>
+  <nb-card-header
+    ><div style="font-size: 1em;">
+      <h1><i class="nb-tables"></i> archivos works! {{ idTarea }}</h1>
+    </div></nb-card-header
+  >
+</nb-card>
+
+<!-- <nb-card accent="info">
+  <nb-accordion>
+    <nb-accordion-item 
+    [expanded]="true"
+    >
+      <nb-accordion-item-header
+        ><h1><i class="nb-compose"></i></h1>
+        Detalle de tarea</nb-accordion-item-header>
+      <nb-accordion-item-body>
+        <div class="row">
+          <div class="col-md-12">
+            <textarea type="text" nbInput fullWidth></textarea>
+          </div>
+        </div>
+      </nb-accordion-item-body>
+    </nb-accordion-item>
+  </nb-accordion>
+</nb-card> -->
+
+<nb-card accent="info">
+  <nb-accordion>
+    <nb-accordion-item
+      ><!--[expanded]="true" decidir si entra abierta la tabla o no-->
+      <nb-accordion-item-header
+        ><h1><i class="nb-cloudy"></i></h1>
+        Archivos</nb-accordion-item-header
+      >
+      <nb-accordion-item-body>
+      
+
+        <div class="row">
+          <div class="col-md-12">
+            <ng2-smart-table
+            [settings]="settings"
+            [source]="this.tareaSrv.t"
+            (custom)="onCustomAction($event)"
+          ></ng2-smart-table>
+         
+          </div>
+        </div>
+      </nb-accordion-item-body>
+
+      <nb-accordion-item-body>
+        <div class="row"></div>
+      </nb-accordion-item-body>
+    </nb-accordion-item>
+
+    <nb-accordion-item>
+      <nb-accordion-item-header
+        ><h1><i class="nb-tables"></i></h1>
+        Subir Archivo</nb-accordion-item-header
+      >
+      <nb-accordion-item-body>
+        <form [formGroup]="myForm">
+          <div class="form-group">
+            <label for="file">File</label>
+            <input
+              formControlName="file"
+              id="file"
+              type="file"
+              class="form-control"
+              (change)="onFileChange($event)"
+            />
+            <div
+              *ngIf="f.file.touched && f.file.invalid"
+              class="alert alert-danger"
+            >
+              <div *ngIf="f.file.errors.required">File is required.</div>
+            </div>
+          </div>
+
+          <div class="progress" *ngIf="this.fileSrv.progress">
+            <div
+              class="progress-bar"
+              [style.width]="this.fileSrv.progress + '%'"
+            >
+              {{ this.fileSrv.progress }}%
+            </div>
+          </div>
+          <button class="btn btn-primary" (click)="upload()">Submit</button>
+        </form>
+      </nb-accordion-item-body>
+    </nb-accordion-item>
+  </nb-accordion>
+</nb-card>
+
+<!-- <nb-card accent="info">
+  <nb-accordion>
+    <nb-accordion-item 
+    [expanded]="true"
+    >
+      <nb-accordion-item-header
+        ><h1><i class="nb-tables"></i></h1>
+        actividades</nb-accordion-item-header>
+      <nb-accordion-item-body>
+        <div class="row">
+          <div class="col-md-12">
+            <textarea type="text" nbInput fullWidth></textarea>
+            <button nbButton>Guardar</button>
+          </div>
+        </div>
+      </nb-accordion-item-body>
+    </nb-accordion-item>
+   
+  </nb-accordion>
+
+ 
+ 
+</nb-card>
+<div>
+  <p>User:!ss!!</p>
+  <textarea type="text" nbInput fullWidth placeholder="Texto comentario a agreagar">
+
+  </textarea>
+</div> -->

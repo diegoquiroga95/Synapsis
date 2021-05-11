@@ -1,0 +1,84 @@
+@import '../../@theme/styles/themes';
+
+
+@include nb-install-component() {
+  .week-end{ background: rgba(183,142,185,0.3) !important;}
+  .show-grid {
+    .row {
+      margin: -0.5rem;
+    }
+
+    div[class^=col-] {
+      padding: 0.5rem;
+      box-sizing: border-box;
+
+      div {
+        text-align: center;
+        //background-color: nb-theme(color-bg-active);
+        padding: 0.75rem 0.25rem;
+        border-radius: 0.25rem;
+      }
+    }
+  }
+
+  .grid-h {
+    margin-top: 1.5rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .table-responsive {
+    margin-top: 1rem;
+  }
+
+  .tarjeta{
+    width: 300px;
+    height:300px;
+  }
+
+}
+:host /deep/ ng2-st-tbody-edit-delete {
+  display: flex !important;
+  height: 0 !important;
+}
+:host /deep/ ng2-smart-table { font-size: medium; }
+:host
+  /deep/
+  ng2-st-tbody-custom
+  a.ng2-smart-action.ng2-smart-action-custom-custom {
+  display: inline;
+  text-align: center;
+  font-size: 0.5em;
+}
+
+:host
+  /deep/
+  ng2-st-tbody-custom
+  a.ng2-smart-action.ng2-smart-action-custom-custom:hover {
+  color: #5dcfe3;
+}
+
+.obraCert{
+  font-weight: bold;
+}
+
+
+:host
+  /deep/
+  nb-card-body
+  td.ng2-smart-actions.ng-star-inserted{
+    width: 110px;
+  }
+
+  :host
+  /deep/
+  ng2-st-tbody-custom
+  a.ng2-smart-action.ng2-smart-action-custom-custom {
+  margin: 0px 5px;
+  margin-right: 10px;
+
+}
+
+

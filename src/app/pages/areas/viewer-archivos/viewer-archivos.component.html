@@ -1,0 +1,21 @@
+<nb-card size="large" [nbSpinner]="loadingUpload" nbSpinnerSize="giant" nbSpinnerStatus="primary">
+
+  <nb-card-body style="padding-left:0;padding-top:0;">
+    
+    <div *ngIf="loadingUpload === true;else ready">
+      {{this.statusText}}
+    </div>
+
+   <ng-template #ready>
+        <adsk-forge-viewer
+  
+        [viewerOptions]="viewerOptions"
+        (onSelectionChanged)="selectionChanged($event)"
+      ></adsk-forge-viewer>
+
+    </ng-template>
+ 
+    </nb-card-body
+></nb-card>
+
+

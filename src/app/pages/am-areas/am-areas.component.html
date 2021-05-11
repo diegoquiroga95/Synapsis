@@ -1,0 +1,59 @@
+<form [formGroup]="d_area_form" (ngSubmit)="onFormSubmit()">
+  <nb-card accent="info">
+    <nb-card-header >{{ aom }} Area</nb-card-header>
+    <nb-card-body>
+      <div class="col-md-4 col-md-offset-4">
+        <div class="form-group row">
+          <label class="label col-sm-3 col-form-label" for="nom"
+            ><b>Nombre</b></label
+          >
+          <div class="col-sm-9">
+            <input
+            nbInput
+            fullWidth
+            shape="semi-round"
+              type="text"
+              formControlName="nombre"
+              class="form-control"
+              id="nom"
+              autocomplete="off"
+              (click)="fixCheckRepetidoMouseClick()"
+              (keyup)="checkNombreRepetido($event)"
+              nbPopover="Nombre en uso. Selecione uno nuevo" 
+              nbPopoverTrigger="noop"
+              nbPopoverPlacement="right"
+            />
+          </div>
+        
+        </div>
+
+        <div class="form-group row">
+          <label class="label col-sm-3 col-form-label"><b>Lider</b></label>
+          <div class="col-sm-9">
+          <nb-select   formControlName="lider">
+            <nb-option *ngFor="let tu of miembros" [value]="tu.id_user">
+              {{tu.nombre}}
+            </nb-option>
+          </nb-select >
+        </div>
+      </div>
+
+        <div class="form-group row">
+          <label class="label col-sm-3 col-form-label" for="mem"><b>Miembros</b></label>
+          <div class="col-sm-9">
+          <kendo-multiselect
+            formControlName="miembros"
+            [data]="miembros"
+            textField="nombre"
+            valueField="id_user"
+            [(ngModel)]="selectedMiembros"
+          >
+          </kendo-multiselect>
+        </div>
+      </div>
+
+      </div>
+    </nb-card-body>
+    <nb-card-footer> <button type="submit" class="btn btn-primary" [disabled]="!d_area_form.valid">{{crear_modificar}} area</button></nb-card-footer>
+  </nb-card>
+</form>

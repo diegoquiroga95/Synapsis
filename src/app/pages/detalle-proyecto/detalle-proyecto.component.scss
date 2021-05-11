@@ -1,0 +1,61 @@
+@import '../../@theme/styles/themes';
+
+@include nb-install-component() {
+  .full-width {
+    flex: 1;
+    min-width: 220px;
+  }
+  nb-select {
+    display: block;
+    width: 15rem;
+  }
+
+  .select-group {
+    nb-select {
+      margin-right: 0.75rem;
+      margin-bottom: 1rem;
+    }
+  }
+ 
+  nb-checkbox {
+    margin-bottom: 1rem;
+  }
+  
+  .form-inline [fullWidth] {
+    flex: 1;
+  }
+  
+  .form-inline > * {
+    margin: 0 1.5rem 1.5rem 0;
+  }
+  
+  nb-card.inline-form-card nb-card-body {
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /deep/ .k-item.k-state-selected {
+    background-color: green !important;
+
+    
+}
+
+.k-button .k-icon, .k-button .k-image, .k-button .k-sprite {
+  color: inherit;
+  align-self: center;
+  position: relative;
+  visibility: hidden;
+}
+.position-select {
+  min-width: 13rem;
+}
+
+.label {
+  display: block;
+}
+
+nb-card-footer button:first-child {
+  @include nb-ltr(margin-right, 1rem);
+  @include nb-rtl(margin-left, 1rem);
+}
+}

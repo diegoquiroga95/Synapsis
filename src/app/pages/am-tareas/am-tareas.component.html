@@ -1,0 +1,114 @@
+    <form [formGroup]="d_tarea_form" (ngSubmit)="onFormSubmit()">
+      <nb-card class="inline-form-card" accent="info" >
+        <nb-card-header>{{aom}} tarea</nb-card-header>
+        <nb-card-body>
+          <div class="col-md-4 col-md-offset-4">
+
+
+
+
+            <div class="form-group row">
+              <label for="nom" class="label col-sm-6 col-form-label"><b>Nombre de Tarea</b></label>
+              <div class="col-sm-9">
+              <input 
+                type="text"
+                nbInput
+                fullWidth
+                shape="semi-round"
+                formControlName="titulo" 
+                class="form-control" 
+                id="nom" 
+                autocomplete="off"
+                [(ngModel)]="this.nombreTarea">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="nom" class="label col-sm-6 col-form-label"><b>Responsable</b></label>
+              <div class="col-sm-9">
+                <nb-select fullWidth shape="semi-round" formControlName="id_responsable" [(ngModel)]="orgUser"> 
+                  <nb-option *ngFor="let tu of miembros" (click)="checkOriginalUser(tu.id_user)" [value]="tu.id_user">{{tu.nombre}} </nb-option>
+                </nb-select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="nom" class="label col-sm-6 col-form-label"><b>Estado</b></label>
+              <div class="col-sm-9">
+                <nb-select fullWidth shape="semi-round" formControlName="estado">
+                  <nb-option *ngFor="let est of estado" [value]="est.id_estado">{{est.nombre}}</nb-option>
+                </nb-select>
+              </div> 
+            </div>
+
+            <div class="form-group row" *ngIf="orgUser== originalUser && this.n_tarea !==-1">
+              <label for="nom" class="label col-sm-6 col-form-label"><b>N° de Prioridad</b></label>
+              <div class="col-sm-9">
+
+                
+                  <nb-select fullWidth shape="semi-round" formControlName="prioridad" [(ngModel)]="this.prioridadTarea">
+                    <nb-option *ngFor="let prior of prior_tareas" [value]="prior.prior" >{{prior.prior}}</nb-option>
+                  </nb-select>
+                  
+               
+              
+               <!--  <input 
+                
+                nbInput
+                fullWidth
+                shape="semi-round"
+                class="form-control"
+                formControlName="prioridad" 
+                [(ngModel)]="this.prioridadTarea"
+             >
+             -->
+              </div>
+            </div>
+
+            <div class="form-group row" *ngIf="this.n_tarea ===-1">
+             
+            </div>
+
+            <div class="form-group row">
+              <label for="nom" class="label col-sm-2 col-form-label"><b>Tiempo estimado</b></label>
+              
+                           
+              <div class="col-sm-3">
+              <nb-select shape="semi-round" fullWidth formControlName="unidadTiempoSelect">
+                <nb-option *ngFor="let unidad of unidadT" (click)="showUt(unidad.unidad)" [value]="unidad.unidad">{{unidad.unidad}}</nb-option>
+              </nb-select>
+            </div>
+              
+              <div class="col-sm-2">
+                <input 
+                type="text"
+                (keypress)="numberOnly($event)"
+                nbInput
+                shape="semi-round"
+                formControlName="tiempo_estimado" 
+                class="form-control" 
+                id="nom" 
+                autocomplete="off"
+                [(ngModel)]="this.hrsEstimado">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row" *ngIf="this.unidadSelected ==='meses'">
+          <div>
+            <label for="nom" class="label col-sm-6 col-form-label"><b>Cant.dias en mes</b></label>
+            <nb-select shape="semi-round" [(ngModel)]="diasEnMes" [ngModelOptions]="{standalone: true}">
+              <nb-option [value]="29">29</nb-option>
+              <nb-option [value]="30">30</nb-option>
+              <nb-option [value]="31">31</nb-option>
+            </nb-select>
+          </div>
+        </div>
+        </nb-card-body>
+
+        <nb-card-footer>
+          <button type="submit" class="btn btn-primary" [disabled]="!d_tarea_form.valid">{{crear_modificar}} tarea</button>
+        </nb-card-footer>
+
+      </nb-card>
+    </form>
